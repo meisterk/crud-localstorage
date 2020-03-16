@@ -21,6 +21,9 @@ export class Presenter {
   }
 
   buttonCancelClicked() {
-    console.log('Button Cancel');
+    this.view = new ListView(this);
+    this.view.render(personen);
   }
+
+  buttonDeleteClicked(index) {}
 }

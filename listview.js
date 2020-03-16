@@ -11,7 +11,8 @@ export class ListView {
       <h2>Liste aller Personen</h2>
       <ul>`;
     personen.forEach(person => {
-      const zeile = `<li>${person.vorname} ${person.nachname}, Geb: ${person.geburtsdatum}</li>`;
+      const zeile = `<li>${person.vorname} ${person.nachname}, Geb: ${person.geburtsdatum} <button>X</button></li>
+      `;
       html = html + zeile;
     });
 
