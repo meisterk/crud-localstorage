@@ -10,10 +10,14 @@ export class ListView {
     let html = `
       <h2>Liste aller Personen</h2>
       <ul>`;
+    let index = 0;
     personen.forEach(person => {
-      const zeile = `<li>${person.vorname} ${person.nachname}, Geb: ${person.geburtsdatum} <button>X</button></li>
-      `;
+      const zeile = `<li>${person.vorname} 
+      ${person.nachname}, Geb: 
+      ${person.geburtsdatum} 
+      <button id="buttonDelete${index}">X</button></li>`;
       html = html + zeile;
+      index++;
     });
 
     // Button "Neu"
@@ -29,5 +33,13 @@ export class ListView {
     buttonNew.addEventListener('click', () => {
       this.presenter.buttonNewClicked();
     });
+
+    for (let i = 0; i < personen.length; i++) {
+      const buttonId = `buttonDelete${i}`;
+      const button = document.getElementById(buttonId);
+      button.addEventListener('click', () => {
+        this.presenter.buttonDeleteClicked(i);
+      });
+    }
   }
 }

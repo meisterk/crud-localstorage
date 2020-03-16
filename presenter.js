@@ -25,5 +25,7 @@ export class Presenter {
     this.view.render(personen);
   }
 
-  buttonDeleteClicked(index) {}
+  buttonDeleteClicked(index) {
+    console.log(index);
+  }
 }
