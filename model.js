@@ -1,6 +1,9 @@
+import { Person } from './person.js';
+
 export class Model {
   constructor() {
     this.personen = [];
+    this.personen.push(new Person());
   }
 
   // CRUD-Methoden

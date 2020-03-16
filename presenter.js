@@ -6,7 +6,7 @@ export class Presenter {
     this.model = new Model();
     const personen = this.model.readAllPersons();
 
-    this.view = new ListView(personen);
+    this.view = new ListView(this);
     this.view.render(personen);
   }
 }
