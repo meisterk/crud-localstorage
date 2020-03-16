@@ -6,13 +6,27 @@ export class ListView {
   }
 
   render(personen) {
-    const vorname = personen[0].vorname;
-    const html = `
+    // Liste aller Personen
+    let html = `
       <h2>Liste aller Personen</h2>
-      <ul>
-        <li>Vorname: ${vorname} ...</li>
-      </ul>
-      `;
+      <ul>`;
+    personen.forEach(person => {
+      const zeile = `<li>${person.vorname} ${person.nachname}, Geb: ${person.geburtsdatum}</li>`;
+      html = html + zeile;
+    });
+
+    // Button "Neu"
+    html =
+      html +
+      `</ul>
+    <button id="buttonNew">Neue Person</button>`;
+
     this.app.innerHTML = html;
+
+    // Eventhandler
+    const buttonNew = document.getElementById('buttonNew');
+    buttonNew.addEventListener('click', () => {
+      this.presenter.buttonNewClicked();
+    });
   }
 }

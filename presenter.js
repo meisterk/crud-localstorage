@@ -1,4 +1,5 @@
 import { ListView } from './listview.js';
+import { InputView } from './inputview.js';
 import { Model } from './model.js';
 
 export class Presenter {
@@ -8,5 +9,18 @@ export class Presenter {
 
     this.view = new ListView(this);
     this.view.render(personen);
+  }
+
+  buttonNewClicked() {
+    this.view = new InputView(this);
+    this.view.render();
+  }
+
+  buttonSaveClicked() {
+    console.log('Button Save');
+  }
+
+  buttonCancelClicked() {
+    console.log('Button Cancel');
   }
 }
