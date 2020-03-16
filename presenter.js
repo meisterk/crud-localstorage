@@ -1,12 +1,12 @@
-import { StartView } from './startview.js';
+import { ListView } from './listview.js';
 import { Model } from './model.js';
 
 export class Presenter {
   constructor() {
     this.model = new Model();
-    const text = this.model.getText();
+    const personen = this.model.readAllPersons();
 
-    this.view = new StartView(this);
-    this.view.render(text);
+    this.view = new ListView(personen);
+    this.view.render(personen);
   }
 }
