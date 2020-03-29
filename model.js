@@ -1,3 +1,5 @@
+import { Person } from './person.js';
+
 export class Model {
   constructor() {
     this.personList = [
