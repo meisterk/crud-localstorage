@@ -4,25 +4,23 @@ import { Model } from './model.js';
 import { CreateUpdateView } from './createupdateview.js';
 
 export class Presenter {
+  //------ S T A R T -------------
   constructor() {
     this.model = new Model();
-    const personList = this.model.getAllPersons();
+    this._showListView();
+  }
 
+  _showListView() {
+    const personList = this.model.getAllPersons();
     this.view = new ListView(this);
     this.view.render(personList);
   }
 
+  //------ from ListView ----------
   buttonUpdateClicked(index) {
     const person = this.model.getPerson(index);
     this.view = new CreateUpdateView(this);
     this.view.render(index, person);
-  }
-
-  buttonDeleteClicked(index) {
-    this.model.deletePerson(index);
-    const personList = this.model.getAllPersons();
-    this.view = new ListView(this);
-    this.view.render(personList);
   }
 
   buttonNewClicked() {
@@ -31,7 +29,14 @@ export class Presenter {
     this.view.render(-1, newPerson);
   }
 
+  buttonDeleteClicked(index) {
+    this.model.deletePerson(index);
+    this._showListView();
+  }
+
+  //------ from CreateUpdateView ------------
   buttonSaveClicked(index) {
+    // read data from CreateUpdateView
     const newName = this.view.getName();
     const newBirthday = this.view.getBirthday();
     const newPerson = new Person(newName, newBirthday);
@@ -44,15 +49,10 @@ export class Presenter {
       this.model.updatePerson(index, newPerson);
     }
 
-    const personList = this.model.getAllPersons();
-    this.view = new ListView(this);
-    this.view.render(personList);
+    this._showListView();
   }
 
   buttonCancelClicked() {
-    const personList = this.model.getAllPersons();
-
-    this.view = new ListView(this);
-    this.view.render(personList);
+    this._showListView();
   }
 }

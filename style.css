@@ -29,3 +29,7 @@ fieldset {
 input[type='text'] {
   width: 100%;
 }
+
+table {
+  width: 100%;
+}
