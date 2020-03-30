@@ -1,11 +1,8 @@
 export class ListView {
-  constructor(presenter) {
+  constructor(presenter, personList) {
     this.presenter = presenter;
-    this.app = document.getElementById('app');
-  }
 
-  render(personList) {
-    // HTML
+    // ---- HTML ----
     let htmlTable = '<tr><th>Name</th><th>Birthday</th><th></th></tr>';
     for (let i = 0; i < personList.length; i++) {
       const person = personList[i];
@@ -26,26 +23,25 @@ export class ListView {
         <button id="buttonNew">New</button>
         `;
 
+    this.app = document.getElementById('app');
     this.app.innerHTML = html;
 
-    // Controls
+    // ---- Events for buttons ----
     const buttonsUpdate = document.getElementsByClassName('buttonUpdate');
-    const buttonsDelete = document.getElementsByClassName('buttonDelete');
-    const buttonNew = document.getElementById('buttonNew');
-
-    // Events
     for (let i = 0; i < buttonsUpdate.length; i++) {
       buttonsUpdate[i].addEventListener('click', () => {
         this.presenter.buttonUpdateClicked(i);
       });
     }
 
+    const buttonsDelete = document.getElementsByClassName('buttonDelete');
     for (let i = 0; i < buttonsDelete.length; i++) {
       buttonsDelete[i].addEventListener('click', () => {
         this.presenter.buttonDeleteClicked(i);
       });
     }
 
+    const buttonNew = document.getElementById('buttonNew');
     buttonNew.addEventListener('click', () => {
       this.presenter.buttonNewClicked();
     });

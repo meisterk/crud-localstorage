@@ -1,10 +1,8 @@
 export class CreateUpdateView {
-  constructor(presenter) {
+  constructor(presenter, index, person) {
     this.presenter = presenter;
     this.app = document.getElementById('app');
-  }
 
-  render(index, person) {
     // HTML
     const html = `
         <h2>CreateUpdateView</h2>
