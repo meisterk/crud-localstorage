@@ -22,11 +22,14 @@ export class ListView {
         </table>
         <button id="buttonNew">New</button>
         `;
-
     this.app = document.getElementById('app');
     this.app.innerHTML = html;
 
     // ---- Events for buttons ----
+    this._registerEvents();
+  }
+
+  _registerEvents() {
     const buttonsUpdate = document.getElementsByClassName('buttonUpdate');
     for (let i = 0; i < buttonsUpdate.length; i++) {
       buttonsUpdate[i].addEventListener('click', () => {

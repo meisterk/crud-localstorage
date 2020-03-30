@@ -17,24 +17,27 @@ export class CreateUpdateView {
         <button id="buttonSave">Save</button>
         <button id="buttonCancel">Cancel</button>
         `;
-
     this.app.innerHTML = html;
 
     // Controls
     this.inputName = document.getElementById('inputName');
     this.inputBirthday = document.getElementById('inputBirthday');
-    const buttonSave = document.getElementById('buttonSave');
-    const buttonCancel = document.getElementById('buttonCancel');
 
-    // Values
+    // Display values
     this.inputName.value = person.name;
     this.inputBirthday.value = person.birthday;
 
     // Events
+    this._registerEvents(index);
+  }
+
+  _registerEvents(index) {
+    const buttonSave = document.getElementById('buttonSave');
     buttonSave.addEventListener('click', () => {
       this.presenter.buttonSaveClicked(index);
     });
 
+    const buttonCancel = document.getElementById('buttonCancel');
     buttonCancel.addEventListener('click', () => {
       this.presenter.buttonCancelClicked();
     });
