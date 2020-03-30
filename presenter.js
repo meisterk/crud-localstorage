@@ -42,7 +42,7 @@ export class Presenter {
       // create new person
       this.model.addPerson(newPerson);
     } else {
-      // update person
+      // update existing person
       this.model.updatePerson(index, newPerson);
     }
 
