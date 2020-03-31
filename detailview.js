@@ -1,7 +1,6 @@
 export class DetailView {
-  constructor(presenter, index, person) {
+  constructor(presenter, index) {
     this.presenter = presenter;
-    this.app = document.getElementById('app');
 
     // HTML
     const html = `
@@ -17,15 +16,12 @@ export class DetailView {
         <button id="buttonSave">Save</button>
         <button id="buttonCancel">Cancel</button>
         `;
-    this.app.innerHTML = html;
+    const app = document.getElementById('app');
+    app.innerHTML = html;
 
     // Controls
     this.inputName = document.getElementById('inputName');
     this.inputBirthday = document.getElementById('inputBirthday');
-
-    // Display values
-    this.inputName.value = person.name;
-    this.inputBirthday.value = person.birthday;
 
     // Events
     this._registerEvents(index);
@@ -43,11 +39,21 @@ export class DetailView {
     });
   }
 
+  // get values from controls
   getName() {
     return this.inputName.value;
   }
 
   getBirthday() {
     return this.inputBirthday.value;
+  }
+
+  // set values to controls
+  setName(name) {
+    this.inputName.value = name;
+  }
+
+  setBirthday(birthday) {
+    this.inputBirthday.value = birthday;
   }
 }

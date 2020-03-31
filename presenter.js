@@ -18,12 +18,16 @@ export class Presenter {
   //------ from ListView ----------
   buttonUpdateClicked(index) {
     const person = this.model.getPerson(index);
-    this.view = new DetailView(this, index, person);
+    this.view = new DetailView(this, index);
+    this.view.setName(person.name);
+    this.view.setBirthday(person.birthday);
   }
 
   buttonNewClicked() {
     const person = new Person('Please insert name', '1999-12-24');
-    this.view = new DetailView(this, -1, person);
+    this.view = new DetailView(this, -1);
+    this.view.setName(person.name);
+    this.view.setBirthday(person.birthday);
   }
 
   buttonDeleteClicked(index) {
