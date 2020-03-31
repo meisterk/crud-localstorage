@@ -1,7 +1,7 @@
 import { Person } from './person.js';
 import { ListView } from './listview.js';
 import { Model } from './model.js';
-import { CreateUpdateView } from './createupdateview.js';
+import { DetailView } from './detailview.js';
 
 export class Presenter {
   //------ S T A R T -------------
@@ -18,12 +18,12 @@ export class Presenter {
   //------ from ListView ----------
   buttonUpdateClicked(index) {
     const person = this.model.getPerson(index);
-    this.view = new CreateUpdateView(this, index, person);
+    this.view = new DetailView(this, index, person);
   }
 
   buttonNewClicked() {
     const person = new Person('Please insert name', '1999-12-24');
-    this.view = new CreateUpdateView(this, -1, person);
+    this.view = new DetailView(this, -1, person);
   }
 
   buttonDeleteClicked(index) {
@@ -31,9 +31,9 @@ export class Presenter {
     this._showListView();
   }
 
-  //------ from CreateUpdateView ------------
+  //------ from DetailView ------------
   buttonSaveClicked(index) {
-    // read data from CreateUpdateView
+    // read data from DetailView
     const newName = this.view.getName();
     const newBirthday = this.view.getBirthday();
     const newPerson = new Person(newName, newBirthday);

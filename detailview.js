@@ -1,11 +1,11 @@
-export class CreateUpdateView {
+export class DetailView {
   constructor(presenter, index, person) {
     this.presenter = presenter;
     this.app = document.getElementById('app');
 
     // HTML
     const html = `
-        <h2>CreateUpdateView</h2>
+        <h2>DetailView</h2>
         <fieldset>
           <legend>Name</legend>
             <input id="inputName" type="text"></input>
