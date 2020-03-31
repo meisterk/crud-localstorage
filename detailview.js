@@ -1,5 +1,5 @@
 export class DetailView {
-  constructor(presenter, index) {
+  constructor(presenter) {
     this.presenter = presenter;
 
     // HTML
@@ -24,13 +24,13 @@ export class DetailView {
     this.inputBirthday = document.getElementById('inputBirthday');
 
     // Events
-    this._registerEvents(index);
+    this._registerEvents();
   }
 
-  _registerEvents(index) {
+  _registerEvents() {
     const buttonSave = document.getElementById('buttonSave');
     buttonSave.addEventListener('click', () => {
-      this.presenter.buttonSaveClicked(index);
+      this.presenter.buttonSaveClicked();
     });
 
     const buttonCancel = document.getElementById('buttonCancel');

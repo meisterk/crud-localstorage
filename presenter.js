@@ -18,14 +18,20 @@ export class Presenter {
   //------ from ListView ----------
   buttonUpdateClicked(index) {
     const person = this.model.getPerson(index);
-    this.view = new DetailView(this, index);
+
+    this.actualIndex = index; // read, when buttonSaveClicked is called
+    this.view = new DetailView(this);
+
     this.view.setName(person.name);
     this.view.setBirthday(person.birthday);
   }
 
   buttonNewClicked() {
     const person = new Person('Please insert name', '1999-12-24');
-    this.view = new DetailView(this, -1);
+
+    this.actualIndex = -1; // read, when buttonSaveClicked is called
+    this.view = new DetailView(this);
+
     this.view.setName(person.name);
     this.view.setBirthday(person.birthday);
   }
@@ -36,18 +42,19 @@ export class Presenter {
   }
 
   //------ from DetailView ------------
-  buttonSaveClicked(index) {
+  buttonSaveClicked() {
     // read data from DetailView
     const newName = this.view.getName();
     const newBirthday = this.view.getBirthday();
     const newPerson = new Person(newName, newBirthday);
 
-    if (index < 0) {
+    // actualIndex is set in buttonNewClicked / buttonUpdateClicked
+    if (this.actualIndex < 0) {
       // create new person
       this.model.addPerson(newPerson);
     } else {
       // update existing person
-      this.model.updatePerson(index, newPerson);
+      this.model.updatePerson(this.actualIndex, newPerson);
     }
 
     this._showListView();
