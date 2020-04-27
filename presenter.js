@@ -24,16 +24,18 @@ export class Presenter {
 
     this.view.setName(person.name);
     this.view.setBirthday(person.birthday);
+    this.view.setTshirt(person.tshirt);
   }
 
   buttonNewClicked() {
-    const person = new Person('Please insert name', '1999-12-24');
+    const person = new Person('Please insert name', '1999-12-24', 'M');
 
     this.actualIndex = -1; // read, when buttonSaveClicked is called
     this.view = new DetailView(this);
 
     this.view.setName(person.name);
     this.view.setBirthday(person.birthday);
+    this.view.setTshirt(person.tshirt);
   }
 
   buttonDeleteClicked(index) {
@@ -46,7 +48,8 @@ export class Presenter {
     // read data from DetailView
     const newName = this.view.getName();
     const newBirthday = this.view.getBirthday();
-    const newPerson = new Person(newName, newBirthday);
+    const newTshirt = this.view.getTshirt();
+    const newPerson = new Person(newName, newBirthday, newTshirt);
 
     // actualIndex is set in buttonNewClicked / buttonUpdateClicked
     if (this.actualIndex < 0) {

@@ -3,9 +3,9 @@ import { Person } from './person.js';
 export class Model {
   constructor() {
     this.personList = [
-      { name: 'Anna Arm', birthday: '2001-12-24' },
-      { name: 'Berta Bein', birthday: '1993-07-12' },
-      { name: 'Carla Copf', birthday: '1980-03-07' }
+      { name: 'Anna Arm', birthday: '2001-12-24', tshirt: 'S' },
+      { name: 'Berta Bein', birthday: '1993-07-12', tshirt: 'L' },
+      { name: 'Carla Copf', birthday: '1980-03-07', tshirt: 'XL' }
     ];
   }
 
